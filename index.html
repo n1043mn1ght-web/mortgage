@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://n1043mn1ght-web.github.io">
     
-    <!-- ГАРАНТИРОВАННАЯ ИКОНКА (Base64 PNG 32x32) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAX0lEQVRYR+2W0QqAIAxEz/9/unYp6MaYmBe99CHiMIdpXAFUABXAAUeApVvV9V0FKAn5YCUgC5AFKgOywCRAFogMyAKTAHkgMiALTAKe/YHehf0C6X8mQC9wAn887VsFqAe6QD8Mog6X9Y6OqAAAAABJRU5ErkJggg==">
+    <!-- ПРЯМАЯ ССЫЛКА НА ВАШ ФАЙЛ ИКОНКИ -->
+    <link rel="icon" type="image/png" href="dollar.png">
+    <link rel="apple-touch-icon" href="dollar.png">
 
-    <title>SmartCalc — Mortgage, Percent & Age Tools</title>
+    <title>SmartCalc Financial — Mortgage, Percent & Age Tools</title>
     <meta name="description" content="Professional mortgage, interest, and age calculators. Fast, accurate, and 100% free utility tools by SmartCalc Network.">
     
     <!-- SEO JSON-LD -->
@@ -30,10 +31,11 @@
     <header class="bg-[#003366] text-white py-6 shadow-md">
         <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="location.reload()">
-                <div class="w-10 h-10 bg-white rounded flex items-center justify-center shadow-inner">
-                    <span class="text-[#003366] font-bold text-2xl">$</span>
+                <div class="w-10 h-10 bg-white rounded flex items-center justify-center shadow-inner overflow-hidden p-1">
+                    <!-- Иконка в шапке для единства стиля -->
+                    <img src="dollar.png" alt="logo" class="w-full h-full object-contain">
                 </div>
-                <h1 class="text-2xl font-bold tracking-tight text-white">SmartCalc <span class="font-light text-blue-200 text-lg italic">Financial</span></h1>
+                <h1 class="text-2xl font-bold tracking-tight text-white">SmartCalc <span class="font-light text-blue-200 text-lg italic uppercase">Financial</span></h1>
             </div>
             <nav class="hidden md:flex space-x-6 text-sm font-medium uppercase tracking-wider text-white">
                 <button onclick="showCalc('loan')" class="hover:text-blue-300 transition">Mortgage</button>
@@ -51,9 +53,9 @@
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
                         <h2 class="text-2xl font-bold text-[#003366] mb-6 border-b pb-4 text-left uppercase tracking-tighter">Mortgage Calculator</h2>
                         <div class="grid md:grid-cols-2 gap-6 text-left">
-                            <div class="form-group text-left"><label class="block text-xs font-bold mb-2">Loan Amount ($)</label><input type="number" id="amount" value="300000" oninput="calcLoan()" class="main-input"></div>
-                            <div class="form-group text-left"><label class="block text-xs font-bold mb-2">Interest Rate (%)</label><input type="number" id="rate" value="5.5" step="0.1" oninput="calcLoan()" class="main-input"></div>
-                            <div class="form-group text-left"><label class="block text-xs font-bold mb-2">Loan Term (Years)</label><input type="number" id="term" value="30" oninput="calcLoan()" class="main-input"></div>
+                            <div class="form-group text-left"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Loan Amount ($)</label><input type="number" id="amount" value="300000" oninput="calcLoan()" class="main-input"></div>
+                            <div class="form-group text-left"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Interest Rate (%)</label><input type="number" id="rate" value="5.5" step="0.1" oninput="calcLoan()" class="main-input"></div>
+                            <div class="form-group text-left"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Loan Term (Years)</label><input type="number" id="term" value="30" oninput="calcLoan()" class="main-input"></div>
                         </div>
                     </div>
                 </div>
@@ -70,14 +72,14 @@
                 <div id="age-calc" class="calc-section hidden">
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
                         <h2 class="text-2xl font-bold text-[#003366] mb-6 border-b pb-4 text-left uppercase tracking-tighter">Age Calculator</h2>
-                        <div class="max-w-sm"><label class="block text-xs font-bold mb-2">Date of Birth</label><input type="date" id="birthdate" oninput="calcAge()" class="main-input"></div>
+                        <div class="max-w-sm"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Date of Birth</label><input type="date" id="birthdate" oninput="calcAge()" class="main-input"></div>
                     </div>
                 </div>
                 <!-- FAQ -->
                 <section class="bg-white rounded-xl border border-gray-200 p-8 text-left">
                     <h3 class="text-xl font-bold text-[#003366] mb-4 uppercase tracking-tighter">Financial FAQ</h3>
-                    <p class="text-sm text-gray-600 mb-4"><b>Data Privacy:</b> All calculations are performed in your browser. We never store your financial data.</p>
-                    <p class="text-sm text-gray-600"><b>Accuracy:</b> Our formulas follow standard banking annuity methods used by major lenders.</p>
+                    <p class="text-sm text-gray-600 mb-4"><b>Privacy:</b> All calculations are performed locally in your browser. We never store your data.</p>
+                    <p class="text-sm text-gray-600 italic"><b>Accuracy:</b> Our formulas follow standard banking methods used by major lenders worldwide.</p>
                 </section>
             </div>
 
@@ -87,12 +89,12 @@
                     <p id="result-label" class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Monthly Payment</p>
                     <div id="main-result" class="text-4xl font-bold text-[#003366] mb-2 tabular-nums">$1,703.37</div>
                     <p id="sub-result" class="text-gray-500 text-sm font-medium italic">Principal & Interest</p>
-                    <button onclick="window.print()" class="mt-8 w-full bg-[#003366] text-white font-bold py-3 rounded text-[10px] uppercase tracking-widest shadow-md">Print Full Report</button>
+                    <button onclick="window.print()" class="mt-8 w-full bg-[#003366] text-white font-bold py-3 rounded text-[10px] uppercase tracking-widest shadow-md hover:bg-[#002244] transition">Download PDF Report</button>
                 </div>
             </div>
         </div>
     </main>
-    <footer class="mt-20 py-10 text-center text-xs text-gray-400 border-t bg-white italic tracking-tighter">© 2025 SmartCalc Financial — Professional Suite.</footer>
+    <footer class="mt-20 py-10 text-center text-xs text-gray-400 border-t bg-white italic tracking-tighter">© 2025 SmartCalc Financial — Professional Suite. Part of the SmartCalc Brand Network.</footer>
     <script src="script.js"></script>
 </body>
 </html>
