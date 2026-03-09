@@ -1,0 +1,19 @@
+body { font-family: 'Google Sans', sans-serif; transition: all 0.3s ease; }
+input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #DADCE0;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    outline: none;
+    margin-top: 8px;
+}
+input:focus { border: 2px solid #1a73e8; }
+.calc-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 1px 3px rgba(60,64,67,0.1), 0 4px 8px rgba(60,64,67,0.1);
+}
+label { font-size: 0.9rem; color: #5f6368; font-weight: 500; }
+.hidden { display: none; }
