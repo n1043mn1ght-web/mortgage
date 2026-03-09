@@ -20,6 +20,24 @@
             </div>
         </div>
     </nav>
+<!-- Age & Date Calculator -->
+<div id="age-calc" class="calc-card hidden">
+    <h2 class="text-3xl font-bold mb-6">Age & Date Calculator</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="space-y-4">
+            <div>
+                <label>Date of Birth</label>
+                <input type="date" id="birthdate" oninput="calcAge()" class="cursor-pointer">
+            </div>
+            <p class="text-sm text-[#5f6368]">Enter your birth date to see your precise age, including months and days.</p>
+        </div>
+        <div class="bg-[#F8F9FA] border-2 border-[#1a73e8] p-8 rounded-3xl flex flex-col justify-center items-center text-center">
+            <span class="text-sm text-[#1a73e8] uppercase font-bold tracking-wider mb-2">Your Current Age</span>
+            <div id="age-result" class="text-4xl font-bold text-[#202124]">Select Date</div>
+            <div id="age-details" class="text-sm text-[#5f6368] mt-2 italic"></div>
+        </div>
+    </div>
+</div>
 
     <main class="max-w-4xl mx-auto mt-12 p-4">
         <!-- Loan / Mortgage Calculator -->
