@@ -98,13 +98,13 @@
                     <p class="text-gray-600 leading-relaxed text-sm italic">
                         All calculations are performed locally in your browser for maximum privacy.
                     </p>
-                    <p class="text-gray-600 leading-relaxed text-sm mt-4">
+                    <p class="text-gray-600 leading-relaxed text-sm mt-4 text-justify">
                         Our calculators use industry-standard formulas used by banking institutions worldwide. Whether you're calculating an <strong>amortization schedule</strong> for a new home or simple <strong>interest growth</strong> for your business, precision is our top priority. Understanding your monthly debt-to-income ratio starts with accurate data. Use our free tools to estimate payments, calculate percentages for discounts, or find your exact age in days.
                     </p>
                 </article>
             </div>
 
-            <!-- Right Side: Results Panel & Monetization -->
+            <!-- Right Side: Results Panel -->
             <div class="lg:col-span-1">
                 <div class="bg-white rounded-xl shadow-lg border-t-4 border-[#003366] p-8 sticky top-28">
                     <div id="result-container" class="text-center">
@@ -113,13 +113,17 @@
                         <p id="sub-result" class="text-gray-500 text-sm font-medium">Principal & Interest</p>
                     </div>
 
-                    <!-- MONETIZATION BLOCK (CPA) -->
-                    <div class="mt-8 pt-8 border-t border-gray-100">
+                    <!-- ПАРТНЕРСКИЙ БЛОК: Скрыт с помощью класса 'hidden' -->
+                    <div id="partner-offer" class="mt-8 pt-8 border-t border-gray-100 hidden">
                         <div class="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-100">
                             <p class="text-[10px] font-bold text-blue-600 uppercase mb-2 tracking-tighter">Sponsored Offer</p>
                             <p class="text-xs text-gray-700 mb-3 font-medium text-left">Looking for a loan? Get personalized mortgage rates from top lenders in minutes.</p>
-                            <a href="#" target="_blank" id="offer-link" class="block w-full bg-[#ff9900] text-white text-center font-bold py-3 rounded shadow-sm hover:bg-[#e68a00] transition uppercase text-[10px] tracking-widest">Check Rates Now</a>
+                            <a href="#" target="_blank" class="block w-full bg-[#ff9900] text-white text-center font-bold py-3 rounded shadow-sm hover:bg-[#e68a00] transition uppercase text-[10px] tracking-widest">Check Rates Now</a>
                         </div>
+                    </div>
+
+                    <!-- Кнопка печати всегда видна -->
+                    <div class="mt-8 pt-8 border-t border-gray-100">
                         <button onclick="window.print()" class="w-full bg-[#003366] text-white font-bold py-3 rounded hover:bg-blue-800 transition shadow-md uppercase text-[10px] tracking-widest">Print Full Report</button>
                     </div>
                 </div>
