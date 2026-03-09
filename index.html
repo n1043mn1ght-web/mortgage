@@ -3,109 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCalc — Free Online Mortgage, Percent & Age Calculator</title>
-    <meta name="description" content="Professional-grade financial and utility calculators. Calculate loans, mortgages, percentages, and age with instant results. Free, fast, and accurate.">
+    <title>SmartCalc — Professional Financial & Utility Tools</title>
+    <meta name="description" content="Calculate mortgage payments, interest, percentages, and exact age with our professional-grade tools. Accurate, fast, and free.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#F8F9FA] text-[#202124]">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 p-5 border-b bg-white/90 backdrop-blur-md">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-[#1a73e8] rounded-lg flex items-center justify-center text-white font-bold">Σ</div>
-                <span class="text-xl font-medium tracking-tight text-[#1a73e8]">SmartCalc</span>
+<body class="bg-[#F4F7F9] text-[#333] antialiased">
+    <!-- Header -->
+    <header class="bg-[#003366] text-white py-6 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="location.reload()">
+                <div class="w-10 h-10 bg-white rounded flex items-center justify-center">
+                    <span class="text-[#003366] font-bold text-2xl">$</span>
+                </div>
+                <h1 class="text-2xl font-bold tracking-tight">SmartCalc <span class="font-light text-blue-200 text-lg">Financial</span></h1>
             </div>
-            <div class="flex space-x-4 md:space-x-8 text-sm font-medium text-[#5f6368]">
-                <button onclick="showCalc('loan')" class="nav-link hover:text-[#1a73e8]">Mortgage</button>
-                <button onclick="showCalc('percent')" class="nav-link hover:text-[#1a73e8]">Percentage</button>
-                <button onclick="showCalc('age')" class="nav-link hover:text-[#1a73e8]">Age</button>
-            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium uppercase tracking-wider">
+                <button onclick="showCalc('loan')" class="hover:text-blue-300 transition">Mortgage</button>
+                <button onclick="showCalc('percent')" class="hover:text-blue-300 transition">Percentage</button>
+                <button onclick="showCalc('age')" class="hover:text-blue-300 transition">Age Tool</button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main class="max-w-4xl mx-auto mt-12 p-4">
-        <!-- 1. Mortgage Calculator -->
-        <div id="loan-calc" class="calc-card">
-            <h2 class="text-3xl font-bold mb-8 text-[#202124]">Mortgage Calculator</h2>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="space-y-6">
-                    <div class="input-group">
-                        <label>Loan Amount ($)</label>
-                        <input type="number" id="amount" value="300000" oninput="calcLoan()">
-                    </div>
-                    <div class="input-group">
-                        <label>Interest Rate (%)</label>
-                        <input type="number" id="rate" value="5.5" step="0.1" oninput="calcLoan()">
-                    </div>
-                    <div class="input-group">
-                        <label>Loan Term (Years)</label>
-                        <input type="number" id="term" value="30" oninput="calcLoan()">
+    <main class="max-w-5xl mx-auto px-4 py-12">
+        <div class="grid lg:grid-cols-3 gap-8">
+            
+            <!-- Left Side: Inputs -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Mortgage Calculator Section -->
+                <div id="loan-calc" class="calc-section block">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+                        <h2 class="text-2xl font-bold text-[#003366] mb-6 border-b pb-4">Mortgage Payment Calculator</h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label>Home Price / Loan Amount ($)</label>
+                                <input type="number" id="amount" value="300000" oninput="calcLoan()" class="main-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Annual Interest Rate (%)</label>
+                                <input type="number" id="rate" value="5.5" step="0.1" oninput="calcLoan()" class="main-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Loan Term (Years)</label>
+                                <input type="number" id="term" value="30" oninput="calcLoan()" class="main-input">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-[#E8F0FE] p-10 rounded-[32px] flex flex-col justify-center items-center text-center">
-                    <span class="text-xs text-[#1967d2] uppercase font-bold tracking-[0.1em] mb-2">Monthly Payment</span>
-                    <div id="loan-result" class="text-5xl font-bold text-[#1a73e8]">$1,703.37</div>
+
+                <!-- Percentage Calculator Section -->
+                <div id="percent-calc" class="calc-section hidden">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+                        <h2 class="text-2xl font-bold text-[#003366] mb-6 border-b pb-4">Percentage Calculator</h2>
+                        <div class="space-y-6">
+                            <div class="flex flex-wrap items-center text-lg">
+                                <span>What is</span>
+                                <input type="number" id="p-val" value="10" oninput="calcPercent()" class="inline-input mx-3">
+                                <span>% of</span>
+                                <input type="number" id="p-total" value="200" oninput="calcPercent()" class="inline-input mx-3">
+                                <span class="font-bold">?</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Age Calculator Section -->
+                <div id="age-calc" class="calc-section hidden">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+                        <h2 class="text-2xl font-bold text-[#003366] mb-6 border-b pb-4">Age & Date Calculator</h2>
+                        <div class="max-w-sm">
+                            <label class="block text-sm font-bold text-gray-600 mb-2 uppercase">Date of Birth</label>
+                            <input type="date" id="birthdate" oninput="calcAge()" class="main-input">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expert Content (SEO) -->
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 prose max-w-none">
+                    <h3 class="text-xl font-bold text-[#003366]">Financial Accuracy & Planning</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">Our calculators use industry-standard formulas used by banking institutions worldwide. Whether you're calculating an <strong>amortization schedule</strong> for a new home or simple <strong>interest growth</strong> for your business, precision is our top priority. Understanding your monthly debt-to-income ratio starts with accurate data.</p>
+                </article>
+            </div>
+
+            <!-- Right Side: Results Panel -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-lg border-t-4 border-[#003366] p-8 sticky top-28">
+                    <div id="result-container" class="text-center">
+                        <p id="result-label" class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">Monthly Payment</p>
+                        <div id="main-result" class="text-4xl font-bold text-[#003366] mb-2">$1,703.37</div>
+                        <p id="sub-result" class="text-gray-500 text-sm font-medium">Principal & Interest</p>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-gray-100">
+                        <button onclick="window.print()" class="w-full bg-[#003366] text-white font-bold py-3 rounded hover:bg-blue-800 transition shadow-md uppercase text-xs tracking-widest">Print Report</button>
+                    </div>
                 </div>
             </div>
+
         </div>
-
-        <!-- 2. Percentage Calculator -->
-        <div id="percent-calc" class="calc-card hidden">
-            <h2 class="text-3xl font-bold mb-8 text-[#202124]">Percentage Calculator</h2>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="space-y-6 flex flex-col justify-center">
-                    <div class="text-lg text-[#5f6368]">
-                        What is <input type="number" id="p-val" value="10" class="inline-input" oninput="calcPercent()"> % 
-                        of <input type="number" id="p-total" value="200" class="inline-input" oninput="calcPercent()">?
-                    </div>
-                </div>
-                <div class="bg-[#F1F3F4] p-10 rounded-[32px] flex flex-col justify-center items-center text-center">
-                    <span class="text-xs text-[#5f6368] uppercase font-bold tracking-[0.1em] mb-2">Result</span>
-                    <div id="percent-result" class="text-5xl font-bold text-[#202124]">20.00</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. Age Calculator -->
-        <div id="age-calc" class="calc-card hidden">
-            <h2 class="text-3xl font-bold mb-8 text-[#202124]">Age Calculator</h2>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="space-y-6">
-                    <div class="input-group">
-                        <label>Date of Birth</label>
-                        <input type="date" id="birthdate" oninput="calcAge()" class="cursor-pointer">
-                    </div>
-                    <p class="text-sm text-[#5f6368]">Accurate age calculation including leap years.</p>
-                </div>
-                <div class="bg-white border-2 border-[#1a73e8] p-10 rounded-[32px] flex flex-col justify-center items-center text-center">
-                    <span class="text-xs text-[#1a73e8] uppercase font-bold tracking-[0.1em] mb-2">Current Age</span>
-                    <div id="age-result" class="text-4xl font-bold text-[#202124]">Select Date</div>
-                    <div id="age-details" class="text-sm text-[#5f6368] mt-2 italic"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SEO Content Section -->
-        <section class="mt-20 border-t pt-12 text-[#5f6368] leading-relaxed">
-            <h2 class="text-2xl font-bold text-[#202124] mb-6">Expert Utility Tools</h2>
-            <div class="grid md:grid-cols-3 gap-8 text-sm">
-                <div>
-                    <h3 class="font-bold text-[#1a73e8] mb-3">Mortgage Insights</h3>
-                    <p>Plan your future home purchase with our **Mortgage Calculator**. Accurate interest estimation for global bank loans.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-[#1a73e8] mb-3">Business Math</h3>
-                    <p>The **Percentage Calculator** is perfect for sales tax, discounts, and investment growth tracking.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-[#1a73e8] mb-3">Precision Age Tool</h3>
-                    <p>Determine exact time intervals for legal docs, HR, or personal milestones with our **Age Tool**.</p>
-                </div>
-            </div>
-        </section>
     </main>
+
+    <footer class="bg-gray-100 border-t mt-20 py-10">
+        <div class="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
+            <p>&copy; 2025 SmartCalc Professional Financial Suite. For informational purposes only.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

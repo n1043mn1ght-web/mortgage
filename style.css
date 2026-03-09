@@ -1,17 +1,65 @@
-body { font-family: 'Inter', sans-serif; }
-.calc-card {
+body { font-family: 'Roboto', sans-serif; }
+
+.calc-section { transition: opacity 0.3s ease; }
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4a5568;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.025em;
+}
+
+.main-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #CBD5E0;
+    border-radius: 4px;
+    font-size: 1.125rem;
+    color: #2D3748;
+    transition: all 0.2s;
+    background: #F8FAFC;
+}
+
+.main-input:focus {
+    outline: none;
+    border-color: #003366;
     background: white;
-    padding: 40px;
-    border-radius: 32px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
 }
-.input-group label {
-    display: block; font-size: 0.875rem; font-weight: 500; color: #5f6368; margin-bottom: 8px;
+
+.inline-input {
+    width: 110px;
+    padding: 8px 12px;
+    border: 1px solid #CBD5E0;
+    border-radius: 4px;
+    background: #F8FAFC;
+    font-weight: bold;
 }
-input {
-    width: 100%; padding: 12px 16px; background: #f1f3f4; border-radius: 12px; border: 2px solid transparent; outline: none;
-}
-input:focus { border-color: #1a73e8; background: white; }
-.inline-input { width: 90px; padding: 4px 8px; margin: 0 4px; }
+
 .hidden { display: none; }
-.nav-link { transition: color 0.2s; position: relative; }
+
+header button {
+    position: relative;
+}
+
+header button::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #66CCFF;
+    transition: width 0.3s ease;
+}
+
+header button:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .sticky { position: static; }
+}
