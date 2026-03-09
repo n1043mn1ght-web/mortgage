@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Favicon -->
+    <!-- 1. CANONICAL (Защита от дублей при переезде) -->
+    <link rel="canonical" href="https://n1043mn1ght-web.github.io/my-calculators/">
+    
+    <!-- 2. FAVICON -->
     <link rel="icon" href="https://fonts.gstatic.com" type="image/svg+xml">
     
-    <!-- Primary SEO Tags -->
+    <!-- 3. SEO & SOCIAL -->
     <title>SmartCalc — Professional Mortgage, Percent & Age Tools</title>
     <meta name="description" content="Calculate mortgage payments, interest rates, percentages, and exact age with our professional-grade tools. Accurate, fast, and 100% free.">
-    
-    <!-- Social Media Meta Tags (Open Graph) -->
     <meta property="og:title" content="SmartCalc — Professional Mortgage & Financial Tools">
     <meta property="og:description" content="Calculate your mortgage, age, and percentages instantly with our high-precision tools.">
     <meta property="og:image" content="https://fonts.gstatic.com">
-    <meta property="og:url" content="https://n1043mn1ght-web.github.io">
+    <meta property="og:url" content="https://n1043mn1ght-web.github.io/my-calculators/">
     <meta property="og:type" content="website">
+
+    <!-- 4. JSON-LD (Микроразметка для Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialCalculator",
+      "name": "SmartCalc Financial Suite",
+      "description": "Professional tools for mortgage, percentage and age calculations.",
+      "url": "https://n1043mn1ght-web.github.io/my-calculators/"
+    }
+    </script>
 
     <!-- Design & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,9 +43,9 @@
                 <div class="w-10 h-10 bg-white rounded flex items-center justify-center shadow-inner">
                     <span class="text-[#003366] font-bold text-2xl">$</span>
                 </div>
-                <h1 class="text-2xl font-bold tracking-tight">SmartCalc <span class="font-light text-blue-200 text-lg">Financial</span></h1>
+                <h1 class="text-2xl font-bold tracking-tight text-white">SmartCalc <span class="font-light text-blue-200 text-lg">Financial</span></h1>
             </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium uppercase tracking-wider">
+            <nav class="hidden md:flex space-x-6 text-sm font-medium uppercase tracking-wider text-white">
                 <button onclick="showCalc('loan')" class="hover:text-blue-300 transition">Mortgage</button>
                 <button onclick="showCalc('percent')" class="hover:text-blue-300 transition">Percentage</button>
                 <button onclick="showCalc('age')" class="hover:text-blue-300 transition">Age Tool</button>
@@ -95,7 +107,7 @@
                     </div>
                 </div>
 
-                <!-- БЛОК FAQ (ЭКСПЕРТНОСТЬ И SEO) -->
+                <!-- БЛОК FAQ -->
                 <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
                     <h3 class="text-xl font-bold text-[#003366] mb-6 border-b pb-4">Frequently Asked Questions</h3>
                     <div class="space-y-6">
@@ -105,7 +117,7 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-gray-800">Why use a digital age calculator?</h4>
-                            <p class="text-gray-600 text-sm mt-1">Calculating age manually can be tricky due to leap years and varying month lengths. Our tool uses standard UTC time logic to provide precision down to the day, essential for legal and HR documentation.</p>
+                            <p class="text-gray-600 text-sm mt-1">Calculating age manually can be tricky due to leap years and varying month lengths. Our tool uses standard UTC time logic to provide precision down to the day.</p>
                         </div>
                         <div>
                             <h4 class="font-bold text-gray-800">Is my data safe with SmartCalc?</h4>
@@ -124,18 +136,18 @@
                         <p id="sub-result" class="text-gray-500 text-sm font-medium">Principal & Interest</p>
                     </div>
 
-                    <!-- ПАРТНЕРСКИЙ БЛОК (Скрыт) -->
+                    <!-- ПАРТНЕРСКИЙ БЛОК: Скрыт (удалите 'hidden' для активации) -->
                     <div id="partner-offer" class="mt-8 pt-8 border-t border-gray-100 hidden">
-                        <div class="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-100">
-                            <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">Sponsored Offer</p>
-                            <p class="text-xs text-gray-700 mb-3">Compare real mortgage rates from top lenders.</p>
-                            <a href="#" class="block w-full bg-[#ff9900] text-white text-center font-bold py-2 rounded text-[10px]">CHECK RATES</a>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-100 text-left">
+                            <p class="text-[10px] font-bold text-blue-600 uppercase mb-2 tracking-tighter text-left">Sponsored Offer</p>
+                            <p class="text-xs text-gray-700 mb-3 font-medium text-left leading-tight">Looking for a loan? Get personalized mortgage rates from top lenders in minutes.</p>
+                            <a href="#" target="_blank" class="block w-full bg-[#ff9900] text-white text-center font-bold py-3 rounded shadow-sm hover:bg-[#e68a00] transition uppercase text-[10px] tracking-widest">Check Rates Now</a>
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-8 border-t border-gray-100 text-center">
+                    <!-- Кнопка печати -->
+                    <div class="mt-8 pt-8 border-t border-gray-100">
                         <button onclick="window.print()" class="w-full bg-[#003366] text-white font-bold py-3 rounded hover:bg-blue-800 transition shadow-md uppercase text-[10px] tracking-widest">Print Full Report</button>
-                        <p class="mt-4 text-[10px] text-gray-400">Professional Report v1.2</p>
                     </div>
                 </div>
             </div>
