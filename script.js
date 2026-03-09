@@ -1,6 +1,11 @@
 function showCalc(type) {
-    document.querySelectorAll('.calc-card').forEach(c => c.classList.add('hidden'));
-    document.getElementById(type + '-calc').classList.remove('hidden');
+    // Скрываем все карточки
+    document.querySelectorAll('.calc-card').forEach(card => {
+        card.classList.add('hidden');
+    });
+    // Показываем нужную
+    const active = document.getElementById(type + '-calc');
+    active.classList.remove('hidden');
 }
 
 function calcLoan() {
@@ -11,15 +16,18 @@ function calcLoan() {
     if (P && r && n) {
         const x = Math.pow(1 + r, n);
         const monthly = (P * x * r) / (x - 1);
-        document.getElementById('loan-result').innerText = '$' + monthly.toFixed(2);
+        document.getElementById('loan-result').innerText = '$' + monthly.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    } else {
+        document.getElementById('loan-result').innerText = '$0.00';
     }
 }
 
 function calcPercent() {
-    const p = parseFloat(document.getElementById('p-val').value);
+    const val = parseFloat(document.getElementById('p-val').value);
     const total = parseFloat(document.getElementById('p-total').value);
-    if (p && total) {
-        document.getElementById('percent-result').innerText = (total * p / 100).toFixed(2);
+    if (!isNaN(val) && !isNaN(total)) {
+        const result = (total * val) / 100;
+        document.getElementById('percent-result').innerText = result.toLocaleString('en-US', {maximumFractionDigits: 2});
     }
 }
 
@@ -45,8 +53,11 @@ function calcAge() {
     }
 
     document.getElementById('age-result').innerText = `${years} Years Old`;
-    document.getElementById('age-details').innerText = `${months} months and ${days} days`;
+    document.getElementById('age-details').innerText = `${months} months, ${days} days`;
 }
 
-// Инициализация при загрузке
-window.onload = calcLoan;
+// Запуск при загрузке
+window.onload = () => {
+    calcLoan();
+    calcPercent();
+};

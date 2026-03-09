@@ -3,100 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCalc — Fast Loan, Mortgage & Age Calculator</title>
-    <meta name="description" content="Calculate mortgage, interest, percentages, and age online for free. Simple, fast, and accurate tools for everyday tasks.">
+    <title>SmartCalc — Free Online Mortgage, Percent & Age Calculator</title>
+    <meta name="description" content="Professional-grade financial and utility calculators. Calculate loans, mortgages, percentages, and age with instant results. Free, fast, and accurate.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-[#F8F9FA] text-[#202124]">
-    <nav class="p-6 border-b bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 p-5 border-b bg-white/90 backdrop-blur-md">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-[#1a73e8]">SmartCalc</h1>
-            <div class="space-x-4 text-sm font-medium text-[#5f6368]">
-                <button onclick="showCalc('loan')" class="hover:text-[#1a73e8]">Mortgage</button>
-                <button onclick="showCalc('percent')" class="hover:text-[#1a73e8]">Percent</button>
-                <button onclick="showCalc('age')" class="hover:text-[#1a73e8]">Age</button>
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-[#1a73e8] rounded-lg flex items-center justify-center text-white font-bold">Σ</div>
+                <span class="text-xl font-medium tracking-tight text-[#1a73e8]">SmartCalc</span>
+            </div>
+            <div class="flex space-x-4 md:space-x-8 text-sm font-medium text-[#5f6368]">
+                <button onclick="showCalc('loan')" class="nav-link hover:text-[#1a73e8]">Mortgage</button>
+                <button onclick="showCalc('percent')" class="nav-link hover:text-[#1a73e8]">Percentage</button>
+                <button onclick="showCalc('age')" class="nav-link hover:text-[#1a73e8]">Age</button>
             </div>
         </div>
     </nav>
-<!-- Age & Date Calculator -->
-<div id="age-calc" class="calc-card hidden">
-    <h2 class="text-3xl font-bold mb-6">Age & Date Calculator</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-        <div class="space-y-4">
-            <div>
-                <label>Date of Birth</label>
-                <input type="date" id="birthdate" oninput="calcAge()" class="cursor-pointer">
-            </div>
-            <p class="text-sm text-[#5f6368]">Enter your birth date to see your precise age, including months and days.</p>
-        </div>
-        <div class="bg-[#F8F9FA] border-2 border-[#1a73e8] p-8 rounded-3xl flex flex-col justify-center items-center text-center">
-            <span class="text-sm text-[#1a73e8] uppercase font-bold tracking-wider mb-2">Your Current Age</span>
-            <div id="age-result" class="text-4xl font-bold text-[#202124]">Select Date</div>
-            <div id="age-details" class="text-sm text-[#5f6368] mt-2 italic"></div>
-        </div>
-    </div>
-</div>
 
     <main class="max-w-4xl mx-auto mt-12 p-4">
-        <!-- Loan / Mortgage Calculator -->
-        <div id="loan-calc" class="calc-card active">
-            <h2 class="text-3xl font-bold mb-6">Mortgage & Loan Calculator</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-4">
-                    <div>
+        <!-- 1. Mortgage Calculator -->
+        <div id="loan-calc" class="calc-card">
+            <h2 class="text-3xl font-bold mb-8 text-[#202124]">Mortgage Calculator</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-6">
+                    <div class="input-group">
                         <label>Loan Amount ($)</label>
                         <input type="number" id="amount" value="300000" oninput="calcLoan()">
                     </div>
-                    <div>
+                    <div class="input-group">
                         <label>Interest Rate (%)</label>
                         <input type="number" id="rate" value="5.5" step="0.1" oninput="calcLoan()">
                     </div>
-                    <div>
+                    <div class="input-group">
                         <label>Loan Term (Years)</label>
                         <input type="number" id="term" value="30" oninput="calcLoan()">
                     </div>
                 </div>
-                <div class="bg-[#E8F0FE] p-8 rounded-3xl flex flex-col justify-center items-center">
-                    <span class="text-sm text-[#1967d2] uppercase font-bold tracking-wider">Monthly Payment</span>
-                    <div id="loan-result" class="text-5xl font-bold text-[#1a73e8] mt-2">$0</div>
+                <div class="bg-[#E8F0FE] p-10 rounded-[32px] flex flex-col justify-center items-center text-center">
+                    <span class="text-xs text-[#1967d2] uppercase font-bold tracking-[0.1em] mb-2">Monthly Payment</span>
+                    <div id="loan-result" class="text-5xl font-bold text-[#1a73e8]">$1,703.37</div>
                 </div>
             </div>
         </div>
 
-        <!-- Другие калькуляторы (структура аналогична) -->
+        <!-- 2. Percentage Calculator -->
         <div id="percent-calc" class="calc-card hidden">
-            <h2 class="text-3xl font-bold mb-6">Percentage Calculator</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-4">
-                    <label>What is <input type="number" id="p-val" value="10" class="inline w-24 mx-2" oninput="calcPercent()"> % of <input type="number" id="p-total" value="200" class="inline w-24 mx-2" oninput="calcPercent()"></label>
+            <h2 class="text-3xl font-bold mb-8 text-[#202124]">Percentage Calculator</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-6 flex flex-col justify-center">
+                    <div class="text-lg text-[#5f6368]">
+                        What is <input type="number" id="p-val" value="10" class="inline-input" oninput="calcPercent()"> % 
+                        of <input type="number" id="p-total" value="200" class="inline-input" oninput="calcPercent()">?
+                    </div>
                 </div>
-                <div class="bg-[#F1F3F4] p-8 rounded-3xl flex flex-col justify-center items-center">
-                    <div id="percent-result" class="text-5xl font-bold text-[#202124]">$0</div>
+                <div class="bg-[#F1F3F4] p-10 rounded-[32px] flex flex-col justify-center items-center text-center">
+                    <span class="text-xs text-[#5f6368] uppercase font-bold tracking-[0.1em] mb-2">Result</span>
+                    <div id="percent-result" class="text-5xl font-bold text-[#202124]">20.00</div>
                 </div>
             </div>
         </div>
-<!-- SEO Content Section -->
-<section class="mt-16 border-t pt-10 text-[#5f6368] leading-relaxed">
-    <h2 class="text-2xl font-bold text-[#202124] mb-4">How to Use Our Smart Calculators</h2>
-    <div class="grid md:grid-cols-2 gap-8 text-sm">
-        <div>
-            <h3 class="font-bold text-[#1a73e8] mb-2">Mortgage & Loan Strategy</h3>
-            <p>Our **Mortgage Calculator** helps you estimate your monthly house payment, including principal and interest. To get the most accurate results, enter the total home price, your down payment, and the current annual interest rate. Understanding your debt-to-income ratio is crucial before applying for a bank loan.</p>
-        </div>
-        <div>
-            <h3 class="font-bold text-[#1a73e8] mb-2">Financial Planning with Percentages</h3>
-            <p>The **Percentage Calculator** is an essential tool for retail shopping and business math. Whether you are calculating a 15% discount during a sale or determining the annual growth of your savings, our tool provides instant results with Google-level precision.</p>
-        </div>
-    </div>
-    
-    <div class="mt-8 p-6 bg-white rounded-2xl border border-dashed border-[#dadce0]">
-        <h3 class="font-bold text-[#202124] mb-2">Why accuracy matters?</h3>
-        <p class="text-xs">Financial decisions require precision. SmartCalc uses the standard annuity payment formula used by major global banks. However, always consult with a financial advisor for final mortgage approvals and tax implications.</p>
-    </div>
-</section>
 
+        <!-- 3. Age Calculator -->
+        <div id="age-calc" class="calc-card hidden">
+            <h2 class="text-3xl font-bold mb-8 text-[#202124]">Age Calculator</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-6">
+                    <div class="input-group">
+                        <label>Date of Birth</label>
+                        <input type="date" id="birthdate" oninput="calcAge()" class="cursor-pointer">
+                    </div>
+                    <p class="text-sm text-[#5f6368]">Accurate age calculation including leap years.</p>
+                </div>
+                <div class="bg-white border-2 border-[#1a73e8] p-10 rounded-[32px] flex flex-col justify-center items-center text-center">
+                    <span class="text-xs text-[#1a73e8] uppercase font-bold tracking-[0.1em] mb-2">Current Age</span>
+                    <div id="age-result" class="text-4xl font-bold text-[#202124]">Select Date</div>
+                    <div id="age-details" class="text-sm text-[#5f6368] mt-2 italic"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content Section -->
+        <section class="mt-20 border-t pt-12 text-[#5f6368] leading-relaxed">
+            <h2 class="text-2xl font-bold text-[#202124] mb-6">Expert Utility Tools</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-sm">
+                <div>
+                    <h3 class="font-bold text-[#1a73e8] mb-3">Mortgage Insights</h3>
+                    <p>Plan your future home purchase with our **Mortgage Calculator**. Accurate interest estimation for global bank loans.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-[#1a73e8] mb-3">Business Math</h3>
+                    <p>The **Percentage Calculator** is perfect for sales tax, discounts, and investment growth tracking.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-[#1a73e8] mb-3">Precision Age Tool</h3>
+                    <p>Determine exact time intervals for legal docs, HR, or personal milestones with our **Age Tool**.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
