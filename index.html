@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mortgage Pro — SmartCalc™ Home Loan & Amortization Engine</title>
-    
-    <!-- FAVICON С ТВОЕЙ ИКОНКОЙ -->
+    <meta name="google-site-verification" content="google5dfafccdc6f81413" />
     <link rel="icon" type="image/png" href="dollar.png?v=4.0">
     <link rel="apple-touch-icon" href="dollar.png">
-    
     <meta name="description" content="Professional mortgage analytics. Calculate monthly payments and total interest with SmartCalc™ precision.">
     <link rel="canonical" href="https://n1043mn1ght-web.github.io" />
-
     <style>
         :root { --primary: #6366f1; --dark: #0f172a; --bg: #f1f5f9; --text: #1e293b; --muted: #64748b; }
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; font-family: 'Inter', sans-serif; }
@@ -24,7 +21,7 @@
         h2 { font-size: 0.8rem; margin: 0 0 12px 0; text-transform: uppercase; color: var(--muted); border-left: 3px solid var(--primary); padding-left: 8px; }
         .control-group { margin-bottom: 12px; }
         .label-box { display: flex; justify-content: space-between; margin-bottom: 2px; }
-        label { font-size: 0.6rem; font-weight: 800; color: var(--muted); text-transform: uppercase; }
+        label { font-size: 0.65rem; font-weight: 800; color: var(--muted); text-transform: uppercase; }
         .val { font-size: 1rem; font-weight: 800; }
         input[type=range] { width: 100%; appearance: none; background: #e2e8f0; height: 4px; border-radius: 10px; outline: none; margin: 8px 0; }
         input[type=range]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: white; border: 4px solid var(--primary); border-radius: 50%; cursor: pointer; }
@@ -67,7 +64,7 @@
     <section class="card res-panel">
         <label>Monthly Payment</label>
         <div class="total-num" id="res-v">$0</div>
-        <div class="badge" id="prof-v">+$0 Interest</div>
+        <div class="badge" id="prof-v">+$0 Total Interest</div>
         <div class="comp-info" id="comp-msg">Bank Loan Analysis...</div>
         <div class="chart"><div id="ch-p"></div><div id="ch-i"></div></div>
         <div style="display: flex; justify-content: space-between; font-size: 0.5rem; font-weight: 800; opacity: 0.6;">
@@ -84,7 +81,7 @@
     <h2>Professional Mortgage Analytics & Loan Forecasting</h2>
     <p>Buying a home is one of the biggest financial decisions in life. The <strong>SmartCalc™ Mortgage Pro</strong> engine helps you visualize the true cost of ownership by calculating principal and interest payments with bank-grade accuracy.</p>
     <h3>Understanding Your Amortization</h3>
-    <p>Our tool breaks down the ratio between your original loan amount and the total interest paid over long horizons. By adjusting the <em>Down Payment</em> and <em>Rate</em>, you can find the optimal strategy to minimize bank overpayments. All simulations are performed client-side for absolute privacy.</p>
+    <p>Our tool breaks down the ratio between your original loan amount and the total interest paid over long horizons. By adjusting the <em>Down Payment</em> and <em>Rate</em>, you can find the optimal strategy to minimize bank overpayments.</p>
 </article>
 <footer><p style="text-align:center; padding: 15px; font-size: 0.7rem; color: var(--muted);">&copy; 2024 SmartCalc™ Ecosystem.</p></footer>
 <script>
@@ -93,22 +90,4 @@
         const price = parseFloat(p_i.value), down = parseFloat(d_i.value);
         const L = price - down;
         const r = (parseFloat(r_i.value)/100)/12, n = parseFloat(y_i.value)*12;
-        let monthly = L * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-        if (!isFinite(monthly)) monthly = L / n;
-        const totalPaid = monthly * n, interest = totalPaid - L;
-        document.getElementById('p-t').innerText = '$' + price.toLocaleString();
-        document.getElementById('d-t').innerText = '$' + down.toLocaleString();
-        document.getElementById('r-t').innerText = parseFloat(r_i.value).toFixed(1) + '%';
-        document.getElementById('y-t').innerText = y_i.value + 'y';
-        document.getElementById('res-v').innerText = '$' + Math.round(monthly).toLocaleString();
-        document.getElementById('prof-v').innerText = '+$' + Math.round(interest).toLocaleString() + ' INTEREST';
-        document.getElementById('comp-msg').innerHTML = `Loan: <b>$${L.toLocaleString()}</b> | Total: <b>$${Math.round(totalPaid).toLocaleString()}</b>`;
-        const pPerc = (L / totalPaid) * 100;
-        document.getElementById('ch-p').style.width = pPerc + '%';
-        document.getElementById('ch-i').style.width = (100 - pPerc) + '%';
-    }
-    [p_i, d_i, r_i, y_i].forEach(el => el.addEventListener('input', update));
-    update();
-</script>
-</body>
-</html>
+        let monthly = L * (r * Math.pow(1 +
