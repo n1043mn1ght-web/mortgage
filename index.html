@@ -28,6 +28,29 @@
       }
     }
     </script>
+
+    <!-- FAQ SCHEMA: Увеличивает размер вашего сайта в результатах поиска Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How to calculate a mortgage payment in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The monthly payment is calculated based on the loan amount, interest rate, and term using the standard amortization formula. Our SmartCalc™ engine provides real-time strategic insights."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is a strategic down payment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A down payment of 20% or more is considered strategic as it typically eliminates the need for Private Mortgage Insurance (PMI) and lowers long-term interest costs."
+        }
+      }]
+    }
+    </script>
     
     <!-- Иконка вкладки -->
     <link rel="icon" type="image/png" href="dollar.png">
@@ -42,6 +65,14 @@
             --navy-deep: #0f172a;
             --glass-white: rgba(255, 255, 255, 0.95);
         }
+
+        /* АНИМАЦИЯ ПУЛЬСАЦИИ СТАТУСА */
+        @keyframes pulse-rank {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+        .authority-badge { animation: pulse-rank 2s infinite; }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { margin: 0; background: var(--bg-body); color: var(--navy-deep); font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -92,12 +123,12 @@
     </style>
 </head>
 
+
 <body>
 
 <header>
     <div class="header-inner">
-        <a href="https://n1043mn1ght-web.github.io" class="logo">Smart<span>Calc</span>™</a>
-        <!-- Добавлен класс authority-badge для пульсации (убедитесь, что CSS в <head> добавлен) -->
+        <a href="https://n1043mn1ght-web.github.io/smartcalc-main/" class="logo">Smart<span>Calc</span>™</a>
         <div class="authority-badge" style="font-size: 0.7rem; font-weight: 800; color: #2563eb; letter-spacing: 1px;">✓ AUTHORITY RANK #1</div>
     </div>
 </header>
@@ -109,8 +140,14 @@
             <p style="color: #64748b; margin-bottom: 25px; font-weight: 600;">Professional home loan amortization & equity analysis.</p>
 
             <div class="input-card">
-                <div class="label-row"><label>Loan Amount</label><div class="val-display">$<span id="p-v">350,000</span></div></div>
-                <input type="range" id="p-i" min="10000" max="1000000" step="5000" value="350000">
+                <div class="label-row"><label>Home Price</label><div class="val-display">$<span id="p-v">437,500</span></div></div>
+                <input type="range" id="p-i" min="50000" max="1500000" step="5000" value="437500">
+            </div>
+
+            <!-- НОВЫЙ БЛОК: DOWN PAYMENT -->
+            <div class="input-card">
+                <div class="label-row"><label>Down Payment (%)</label><div class="val-display"><span id="d-v">20</span>%</div></div>
+                <input type="range" id="d-i" min="0" max="80" step="1" value="20">
             </div>
 
             <div class="input-card">
@@ -120,7 +157,6 @@
 
             <div class="input-card">
                 <div class="label-row"><label>Loan Term (Years)</label><div class="val-display"><span id="t-v">30</span>y</div></div>
-                <!-- Шаг изменен на 1 год для максимальной точности -->
                 <input type="range" id="t-i" min="1" max="40" step="1" value="30">
             </div>
 
@@ -129,11 +165,12 @@
             </div>
         </div>
 
-        <div class="result-panel" style="background: var(--navy-deep); color: #fff;">
+        <div class="result-panel" style="background: var(--navy-deep); color: #ffffff;">
             <div class="res-label" style="color: #cbd5e1; opacity: 0.9;">Monthly Payment</div>
             <div class="res-main" style="color: #ffffff;">$<span id="res-m">2,212</span></div>
             
             <div class="stat-grid" style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;">
+                <div class="stat-row"><span style="color: #94a3b8;">Loan Amount</span><strong id="res-la" style="color: #fff;">$350,000</strong></div>
                 <div class="stat-row"><span style="color: #94a3b8;">Total Interest</span><strong id="res-ti" style="color: #fff;">$446,401</strong></div>
                 <div class="stat-row"><span style="color: #94a3b8;">Total Payoff</span><strong id="res-tp" style="color: #fff;">$796,401</strong></div>
             </div>
@@ -159,11 +196,11 @@
             </div>
         </div>
 
-        <div style="background: var(--navy-deep); color: #fff; padding: 35px; border-radius: 30px;">
+        <div style="background: var(--navy-deep); color: #ffffff; padding: 35px; border-radius: 30px;">
             <h3 style="margin-top: 0; font-family: 'Playfair Display', serif; color: #ffffff;">Strategic FAQ</h3>
             <div style="font-size: 0.9rem; line-height: 1.6; color: #f1f5f9;">
-                <p><strong style="color: #fff;">Fixed vs Variable?</strong> Fixed rates offer security in 2026 market volatility.</p>
-                <p><strong style="color: #fff;">Refinancing?</strong> Lowering your rate by even 1% justifies most closing costs.</p>
+                <p><strong style="color: #ffffff;">Fixed vs Variable?</strong> Fixed rates offer security in 2026 market volatility.</p>
+                <p><strong style="color: #ffffff;">Refinancing?</strong> Lowering your rate by even 1% justifies most closing costs.</p>
             </div>
         </div>
     </div>
@@ -180,19 +217,25 @@
 
 <script>
     const pIn = document.getElementById('p-i');
+    const dIn = document.getElementById('d-i');
     const rIn = document.getElementById('r-i');
     const tIn = document.getElementById('t-i');
 
     function update() {
-        const P = parseFloat(pIn.value);
+        const homePrice = parseFloat(pIn.value);
+        const downPercent = parseFloat(dIn.value);
+        const downAmount = homePrice * (downPercent / 100);
+        const P = homePrice - downAmount; // Чистая сумма кредита
+        
         const r = (parseFloat(rIn.value) / 100) / 12;
         const n = parseFloat(tIn.value) * 12;
 
-        document.getElementById('p-v').innerText = P.toLocaleString();
+        document.getElementById('p-v').innerText = homePrice.toLocaleString();
+        document.getElementById('d-v').innerText = downPercent;
         document.getElementById('r-v').innerText = rIn.value;
         document.getElementById('t-v').innerText = tIn.value;
+        document.getElementById('res-la').innerText = '$' + Math.round(P).toLocaleString();
 
-        // Расчет аннуитетного платежа
         const M = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
         const totalPayoff = M * n;
         const totalInterest = totalPayoff - P;
@@ -202,22 +245,26 @@
         document.getElementById('res-tp').innerText = '$' + Math.round(totalPayoff).toLocaleString();
 
         const stratMsg = document.getElementById('strat-msg');
+        const interestRatio = (totalInterest / totalPayoff * 100).toFixed(0);
+        
         if (parseFloat(rIn.value) > 7.5) {
-            stratMsg.innerHTML = "<strong>⚠️ Interest Alert:</strong> High rates detected. Focus on maximizing down payment to reduce total debt.";
+            stratMsg.innerHTML = `<strong>⚠️ Interest Alert:</strong> High rates detected. Interest makes up ${interestRatio}% of your payoff.`;
             stratMsg.style.borderColor = "#e74c3c";
         } else {
-            stratMsg.innerHTML = "<strong>💡 Strategic Note:</strong> This rate is competitive for 2026. Review your credit score for even better deals.";
+            stratMsg.innerHTML = `<strong>💡 Strategic Note:</strong> Competitive rate. Interest is ${interestRatio}% of total cost.`;
             stratMsg.style.borderColor = "#2563eb";
         }
     }
 
-    [pIn, rIn, tIn].forEach(el => el.addEventListener('input', update));
+    [pIn, dIn, rIn, tIn].forEach(el => el.addEventListener('input', update));
     update();
 </script>
 </body>
 
 
+
 </html>
+
 
 
 
