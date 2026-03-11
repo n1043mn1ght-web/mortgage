@@ -120,6 +120,14 @@
         footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 40px; }
 
         @media (max-width: 1000px) { .hero-section, .content-area { grid-template-columns: 1fr; } }
+
+        @keyframes pulse-rank {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+.authority-badge { animation: pulse-rank 2s infinite; }
+
     </style>
 </head>
 
@@ -264,6 +272,7 @@
 
 
 </html>
+
 
 
 
