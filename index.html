@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mortgage Calculator 2026 | SmartCalc™ Official</title>
     
+    <!-- Добавленная иконка вкладки -->
+    <link rel="icon" type="image/png" href="dollar.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
@@ -46,7 +49,6 @@
         .result-panel { background: var(--navy-deep); color: #fff; border-radius: 25px; padding: 40px; text-align: center; }
         .res-main { font-size: 4rem; font-weight: 800; margin: 10px 0; letter-spacing: -2px; line-height: 1; }
 
-        /* ИНСАЙТ БЛОК */
         .insight-box {
             background: rgba(37, 99, 235, 0.1); border: 1px solid var(--primary);
             padding: 15px; border-radius: 15px; margin-top: 20px; font-size: 0.9rem; color: #fff; text-align: left;
@@ -59,6 +61,8 @@
         .content-area { margin-top: 40px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
         .article h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; }
         .article p { font-size: 1.05rem; color: #475569; line-height: 1.6; }
+
+        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 40px; }
 
         @media (max-width: 1000px) { .hero-section, .content-area { grid-template-columns: 1fr; } }
     </style>
@@ -115,8 +119,6 @@
         </aside>
     </section>
 
-    
-
     <section class="content-area">
         <div class="article">
             <h2>Why SmartCalc™ is the Industry Standard</h2>
@@ -135,35 +137,33 @@
 
 <script>
     const p_i = document.getElementById('p-i'), d_i = document.getElementById('d-i'), r_i = document.getElementById('r-i'), y_i = document.getElementById('y-i');
+    const p_t = document.getElementById('p-t'), d_t = document.getElementById('d-t'), r_t = document.getElementById('r-t'), y_t = document.getElementById('y-t');
+    const res_v = document.getElementById('res-v'), prof_v = document.getElementById('prof-v'), total_v = document.getElementById('total-v');
     const f = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
     function setD(pct) { d_i.value = p_i.value * pct; update(); }
 
     function update() {
-        const p = parseFloat(p_i.value), d = parseFloat(d_i.value), r = (parseFloat(r_i.value)/100)/12, y = parseFloat(y_i.value)*12;
-        const loan = p - d;
-        let monthly = (r > 0) ? loan * (r * Math.pow(1 + r, y)) / (Math.pow(1 + r, y) - 1) : loan / y;
+        const p = parseFloat(p_i.value), d = parseFloat(d_i.value), r = (parseFloat(r_i.value)/100)/12, y = parseFloat(y_i.value) * 12;
         
-        document.getElementById('p-t').innerText = f.format(p);
-        document.getElementById('d-t').innerText = f.format(d);
-        document.getElementById('r-t').innerText = r_i.value + '%';
-        document.getElementById('y-t').innerText = y_i.value + 'y';
-        
-        document.getElementById('res-v').innerText = f.format(monthly);
-        document.getElementById('prof-v').innerText = f.format((monthly * y) - loan);
-        document.getElementById('total-v').innerText = f.format(monthly * y);
+        p_t.innerText = f.format(p);
+        d_t.innerText = f.format(d);
+        r_t.innerText = r_i.value + '%';
+        y_t.innerText = y_i.value + 'y';
 
-        // ДИНАМИЧЕСКИЕ СОВЕТЫ
-        let insight = "<b>Tip:</b> Increase down payment to 20% to remove PMI insurance.";
-        if ((d/p) >= 0.2) insight = "<b>Expert View:</b> Great! 20% down payment secures the best rates and eliminates PMI.";
-        if (r_i.value > 10) insight = "<b>Warning:</b> High APR detected. Consider a shorter term to save on interest.";
-        document.getElementById('insight-v').innerHTML = insight;
-        
-        document.getElementById('health-check').innerText = `To comfortably afford this, a household income of ${f.format(monthly * 40)}/year is recommended.`;
+        const loan = p - d;
+        const monthly = (loan * r * Math.pow(1 + r, y)) / (Math.pow(1 + r, y) - 1);
+        const total = monthly * y;
+        const interest = total - loan;
+
+        res_v.innerText = f.format(monthly);
+        prof_v.innerText = f.format(interest);
+        total_v.innerText = f.format(total + d);
     }
 
     [p_i, d_i, r_i, y_i].forEach(el => el.addEventListener('input', update));
     update();
 </script>
+
 </body>
 </html>
